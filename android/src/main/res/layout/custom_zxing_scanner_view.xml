@@ -1,0 +1,20 @@
+<!-- android/src/main/res/layout/your_layout.xml -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Place a transparent view to create space at the top -->
+    <View
+        android:id="@+id/topSpace"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+    android:background="@android:color/transparent"/>
+
+    <!-- Your ZXingScannerView -->
+    <me.dm7.barcodescanner.zxing.ZXingScannerView
+        android:id="@+id/scannerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>

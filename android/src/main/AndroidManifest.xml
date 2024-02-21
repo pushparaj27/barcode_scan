@@ -2,6 +2,7 @@
   package="de.mintware.barcode_scan">
 
   <uses-permission android:name="android.permission.CAMERA" />
+  <uses-feature android:name="android.hardware.camera" />
 
   <application>
     <activity android:name="de.mintware.barcode_scan.BarcodeScannerActivity" />

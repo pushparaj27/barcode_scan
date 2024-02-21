@@ -30,17 +30,18 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         const val EXTRA_ERROR_CODE = "error_code"
 
         private val formatMap: Map<Protos.BarcodeFormat, BarcodeFormat> = mapOf(
-                Protos.BarcodeFormat.aztec to BarcodeFormat.AZTEC,
-                Protos.BarcodeFormat.code39 to BarcodeFormat.CODE_39,
-                Protos.BarcodeFormat.code93 to BarcodeFormat.CODE_93,
-                Protos.BarcodeFormat.code128 to BarcodeFormat.CODE_128,
-                Protos.BarcodeFormat.dataMatrix to BarcodeFormat.DATA_MATRIX,
-                Protos.BarcodeFormat.ean8 to BarcodeFormat.EAN_8,
-                Protos.BarcodeFormat.ean13 to BarcodeFormat.EAN_13,
-                Protos.BarcodeFormat.interleaved2of5 to BarcodeFormat.ITF,
-                Protos.BarcodeFormat.pdf417 to BarcodeFormat.PDF_417,
-                Protos.BarcodeFormat.qr to BarcodeFormat.QR_CODE,
-                Protos.BarcodeFormat.upce to BarcodeFormat.UPC_E
+                // Protos.BarcodeFormat.aztec to BarcodeFormat.AZTEC,
+                // Protos.BarcodeFormat.code39 to BarcodeFormat.CODE_39,
+                // Protos.BarcodeFormat.code93 to BarcodeFormat.CODE_93,
+                // Protos.BarcodeFormat.code128 to BarcodeFormat.CODE_128,
+                // Protos.BarcodeFormat.dataMatrix to BarcodeFormat.DATA_MATRIX,
+                // Protos.BarcodeFormat.ean8 to BarcodeFormat.EAN_8,
+                // Protos.BarcodeFormat.ean13 to BarcodeFormat.EAN_13,
+                // Protos.BarcodeFormat.interleaved2of5 to BarcodeFormat.ITF,
+                // Protos.BarcodeFormat.pdf417 to BarcodeFormat.PDF_417,
+                Protos.BarcodeFormat.qr to BarcodeFormat.QR_CODE
+//            ,
+//                Protos.BarcodeFormat.upce to BarcodeFormat.UPC_E
         )
 
     }

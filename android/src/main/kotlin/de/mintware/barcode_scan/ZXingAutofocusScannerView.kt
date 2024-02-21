@@ -280,6 +280,7 @@ import android.graphics.Color
 import android.graphics.Point
 import me.dm7.barcodescanner.core.CameraWrapper
 import me.dm7.barcodescanner.zxing.ZXingScannerView
+import android.os.Build
 
 class ZXingAutofocusScannerView(context: Context) : ZXingScannerView(context) {
 
@@ -325,6 +326,7 @@ class ZXingAutofocusScannerView(context: Context) : ZXingScannerView(context) {
 
 
                 // Set initial auto-zoom
+            if(Build.VERSION.SDK_INT > 29){//Greater than android 10 only zoom func work!!!
                 if (parameters.isZoomSupported) {
                     parameters.zoom = 0
                     currentZoomLevel = 0
@@ -334,7 +336,7 @@ class ZXingAutofocusScannerView(context: Context) : ZXingScannerView(context) {
                     // Start zooming loop
                     startZoomingLoop(cameraWrapper)
                 }
-
+            }
                 cameraWrapper.mCamera.parameters = parameters
             } catch (ex: Exception) {
                 callbackFocus = true
@@ -362,9 +364,10 @@ class ZXingAutofocusScannerView(context: Context) : ZXingScannerView(context) {
 
     private fun startZoomingLoop(cameraWrapper: CameraWrapper) {
         val handler = Handler()
+        val camera = cameraWrapper.mCamera
         handler.postDelayed(object : Runnable {
             override fun run() {
-                if (!cameraReleased) {
+                if (camera != null && !cameraReleased) {
                     increaseZoomLevel(cameraWrapper)
                     handler.postDelayed(this, 3000) // Repeat every 3 seconds
                 }
@@ -372,12 +375,13 @@ class ZXingAutofocusScannerView(context: Context) : ZXingScannerView(context) {
         }, 3000) // Initial delay 3 seconds
     }
 
-    private fun increaseZoomLevel(cameraWrapper: CameraWrapper) {
+private fun increaseZoomLevel(cameraWrapper: CameraWrapper) {
         val camera = cameraWrapper.mCamera
         if (camera != null && !cameraReleased) { // Check if the camera is valid and not released
             val parameters = camera.parameters
             if (parameters.isZoomSupported) {
-                val maxZoom = 40
+//                val maxZoom = 40
+                val maxZoom = parameters.maxZoom
                 if (currentZoomLevel + 10 <= maxZoom) {
                     parameters.zoom = currentZoomLevel + 10
                     camera.parameters = parameters
